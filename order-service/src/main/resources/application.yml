@@ -1,0 +1,38 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/springcloud?useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  cloud:
+    nacos:
+      discovery:
+        cluster-name: HZ
+        # nacos随机生成namespace的id
+#        namespace: bf0edb69-5b1c-460c-a9cd-a4779cccf818
+        # 临时实例 默认值true
+        ephemeral: false
+mybatis:
+  type-aliases-package: cn.itcast.user.pojo
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    cn.itcast: debug
+  pattern:
+    dateformat: MM-dd HH:mm:ss:SSS
+#eureka:
+#  client:
+#    service-url: # eureka服务地址信息
+#      defaultZone: Http://localhost:10086/eureka
+user-service:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则
+#    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule # 负载均衡规则
+# ribbon的配置
+ribbon:
+  eager-load:
+    enabled: true
+    clients: user-service # 指定对某服务进行饥饿加载

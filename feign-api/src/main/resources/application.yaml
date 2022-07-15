@@ -1,0 +1,8 @@
+logging:
+  level:
+    cn.itcast: debug
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: FULL

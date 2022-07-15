@@ -1,0 +1,14 @@
+spring:
+  application:
+    # 服务名称
+    name: user-service
+  profiles:
+    # 环境
+    active: dev
+  cloud:
+    nacos:
+      # Nacos地址
+      server-addr: myvm:8848
+      config:
+        # 配置后缀
+        file-extension: yaml
